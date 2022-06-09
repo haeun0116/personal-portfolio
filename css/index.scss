@@ -1,0 +1,192 @@
+$h2:#{'min(3.6em,36px)'};
+$lh:#{'min(1rem,40px)'};
+$plh:#{'min(0.5rem,20px)'};
+$p:#{'min(1.4em,14px)'};
+$h3:#{'min(2.4em,24px)'};
+$li:#{'min(1.8em,18px)'};
+$ll:#{'min(2rem,80px)'};
+$hh:#{'min(2.5rem,100px)'};
+$ft:#{'min(1.6em,16px)'};
+
+@mixin grid($dev){
+    @if($dev=='tab'){
+        width: 90%;
+        max-width: 1024px;
+    }
+    @else if($dev=='mob'){
+        width: 90%;
+        max-width: 420px;
+    }
+    @else{
+        width: 80%;
+        max-width: 1080px;
+    }
+    margin: 0 auto;
+}
+
+@mixin ff ($fontname,$url) {
+    @font-face {
+        font-family: '#{$fontname}';
+        src: url('../fonts/#{$url}') format('truetype');
+    }
+}
+@include ff('xe','xeicon.ttf');
+@include ff('lo','LondrinaOutline-Regular.ttf');
+@include ff('ls','LondrinaShadow-Regular.ttf');
+@include ff('ss','SDSamliphopangcheTTFBasic.ttf');
+@include ff('so','SDSamliphopangcheTTFOutline.ttf');
+@include ff('ty','Typo_CrayonM.ttf');
+
+@mixin df {
+    display: flex;
+    justify-content: space-between;
+}
+@mixin bg {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+html{
+    font-size: 3vw;
+    overflow-x: hidden;
+    body{
+        font-size: 0.7vw;
+        font-family: 'xe';
+        width: 100vw;
+        height: 100vh;
+        background-image: url('../images/bgi.jpg');
+
+        .hdrWrap{
+            position: fixed;
+            top: 0;
+            height: $ll;
+            width: 100vw;
+            .header{
+                @include df;
+                h1{
+                    font-size: #{'min(4em,40px)'};
+                    font-family: 'so';
+                    line-height: $ll;
+                    color: #555;
+                }
+                .bar{
+                    width: calc(100% / 12 * 1.5);
+                    height: $ll;
+                    .image{
+                        width: 100%;
+                        height: #{'min(1.5rem,60px)'};
+                        margin: $plh $plh 0 $plh;
+                        @include bg;
+                        background-size: contain;
+                        background-image: url('../images/햄버거.png');
+                    }
+                }
+            }
+        }
+
+        .mainWrap{
+            width: 100vw;
+            height: 100vh;
+            .main{
+                @include grid('pc');
+                padding-top: #{'min(5rem,200px)'};
+                .imageTop{
+                    margin-left: auto;
+                    width: calc(100% / 12 * 4);
+                    height: #{'min(4rem,160px)'};
+                    position: relative;
+                    .image{
+                        &.i1{
+                            width: calc(100% / 4 * 3);
+                            height: #{'min(3rem,120px)'};
+                            @include bg;
+                            background-size: contain;
+                            background-image: url('../images/bc_1.png');
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                        }
+                        &.i2{
+                            width: calc(100% / 4 * 2);
+                            height: #{'min(3rem,120px)'};
+                            @include bg;
+                            background-size: contain;
+                            background-image: url('../images/bc_2.png');
+                            position: absolute;
+                            bottom: 0; right: 0;
+                        }
+                    }
+                }
+                h2{
+                    font-size: #{'min(10em,100px)'};
+                    font-family: 'ls';
+                    text-align: center;
+                    color: lightcoral;
+                }
+                .imageBtm{
+                    margin-right: auto;
+                    width: calc(100% / 12 * 2);
+                    height: #{'min(2.5rem,100px)'};
+                    position: relative;
+                    margin-top: #{'min(-1rem,-40px)'};
+                    .image{
+                        &.i1{
+                            width: calc(100% / 4 * 2);
+                            height: $ll;
+                            @include bg;
+                            background-size: contain;
+                            background-image: url('../images/pf.png');
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                        }
+                        &.i2{
+                            width: calc(100% / 4 * 2);
+                            height: $ll;
+                            @include bg;
+                            background-size: contain;
+                            background-image: url('../images/yf.png');
+                            position: absolute;
+                            bottom: 0; right: 13%;
+                        }
+                    }
+                }
+            }
+        }
+
+        .bnrWrap{
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            .header{
+                font-size: $h2;
+                transform: rotate(90deg);
+                position: absolute;
+                left: 0; top: 10%;
+                font-family: 'so';
+                text-transform: capitalize;
+                color: lightpink;
+            }
+            .banner{
+                @include grid('pc');
+                &.bnr01{
+                    .texts{
+                        h2{
+                            font-size: #{'min(4.4em,44px)'};
+                            line-height: $ll;
+                            font-family: 'ty';
+                            span{
+                                font-size: #{'min(5em,50px)'};
+                            }
+                        }
+                    }
+                    .images{}
+                }
+            }
+        }
+
+
+    }
+}
+
